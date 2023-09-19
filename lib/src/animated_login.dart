@@ -123,22 +123,6 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
                 fit: BoxFit.contain,
                 placeHolder: Center(child: CircularProgressIndicator()),
                 stateMachines: const ["Login Machine"],
-                onInit: (artboard) {
-                  controller = StateMachineController.fromArtboard(
-                    artboard,
-                    "Login Machine",
-                  );
-
-                  if (controller == null) return;
-
-                  artboard.addController(controller!);
-
-                  isChecking = controller?.findInput("isChecking");
-                  lookAtNumber = controller?.findInput("numLook");
-                  isHandsUp = controller?.findInput("isHandsUp");
-                  trigFail = controller?.findInput("trigFail");
-                  trigSuccess = controller?.findInput("trigSuccess");
-                },
               ),
             ),
 
