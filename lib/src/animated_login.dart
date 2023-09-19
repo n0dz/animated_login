@@ -120,9 +120,8 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
               width: screenWidth * 0.9,
               child: RiveAnimation.network(
                 "https://public.rive.app/community/runtime-files/4771-9633-login-teddy.riv",
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
                 placeHolder: Center(child: CircularProgressIndicator()),
-                stateMachines: const ["Login Machine"],
               ),
             ),
 
