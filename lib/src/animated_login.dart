@@ -119,7 +119,7 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
               height: screenHeight * 0.31,
               width: screenWidth * 0.9,
               child: RiveAnimation.network(
-                animatePath,
+                "https://github.com/n0dz/animated_login/blob/main/assets/Rive/bear.riv",
                 fit: BoxFit.contain,
                 stateMachines: const ["Login Machine"],
                 onInit: (artboard) {
