@@ -21,7 +21,6 @@ class BaseTextField extends StatefulWidget {
   final IconButton suffixIcon;
   final Function()? onTap;
   final ValueChanged<String>? onChanged;
-  //VoidCallback(String)? onChanged;
 
   @override
   State<BaseTextField> createState() => _BaseTextFieldState();

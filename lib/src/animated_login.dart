@@ -9,7 +9,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
 
 class AnimatedLogin extends StatefulWidget {
-  const AnimatedLogin({super.key});
+  const AnimatedLogin(
+      {super.key,
+      this.pageTitle = "Login",
+      this.field1 = "Email",
+      this.field2 = "Password",
+      this.obscureField1 = false,
+      this.obscureField2 = true,
+      this.backgroundColor = AppColors.kScaffoldBackgroundColor});
+
+  final String? pageTitle;
+  final String? field1;
+  final String? field2;
+  final bool? obscureField1;
+  final bool? obscureField2;
+  final Color? backgroundColor;
 
   @override
   State<AnimatedLogin> createState() => _AnimatedLoginState();
@@ -19,9 +33,6 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
   //* Text controlllers
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  //* Rive Animation Path
-  var animatePath = "assets/Rive/bear.riv";
 
   //* State Machine Input -> SMI Input bool to trigger actions
   SMIInput<bool>? trigSuccess;
@@ -106,9 +117,8 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
             const SizedBox(
               height: 20,
             ),
-
             Text(
-              "LOGIN",
+              widget.pageTitle!,
               style: GoogleFonts.poppins(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -141,7 +151,6 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
                 },
               ),
             ),
-
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 25),
               height: screenHeight * 0.35,
@@ -157,14 +166,16 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     BaseTextField(
                       onChanged: (value) => lookAtNumber?.change(
                         value.length.toDouble(),
                       ),
                       focusNode: emailFocusNode,
                       controller: emailController,
-                      labelText: "Email",
+                      labelText: widget.field1!,
                       obscureText: false,
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.clear),
@@ -180,7 +191,7 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
                     BaseTextField(
                       focusNode: passwordFocusNode,
                       controller: passwordController,
-                      labelText: "Password",
+                      labelText: widget.field2!,
                       obscureText: isObscureText,
                       suffixIcon: IconButton(
                         icon: isObscureText
@@ -204,13 +215,11 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
                         backgroundColor: kSecondaryColor,
                         elevation: 0,
                         shadowColor: Colors.white12,
-                        minimumSize: const Size(
-                          60,60
-                        ),
+                        minimumSize: const Size(60, 60),
                       ),
                       onPressed: login,
                       child: const Text(
-                        "Login",
+                        "Submit",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
