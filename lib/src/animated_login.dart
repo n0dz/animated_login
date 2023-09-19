@@ -109,7 +109,7 @@ class _AnimatedLoginState extends State<AnimatedLogin> {
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      //* body
+      backgroundColor: widget.backgroundColor,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
